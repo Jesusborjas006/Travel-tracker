@@ -27,7 +27,13 @@ describe("Traveler Repository", () => {
   it("the stored users in the property array should be instances of the Traveler class", function () {
     expect(travelerRepo.travelers[0]).to.be.an.instanceOf(Traveler);
   });
+
+  it("should have a method that returns a travelers data when given their traveler ID", function () {
+    expect(travelerRepo.returnUserData(3)).to.deep.equal({
+      id: 3,
+      name: "Sibby Dawidowitsch",
+      travelerType: "shopper"
+    });
+  });
 });
-
-
 
