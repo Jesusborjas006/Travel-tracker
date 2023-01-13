@@ -1,10 +1,13 @@
 import { expect } from "chai";
 import Trip from "../src/Trip";
-import allTripInfo from "./testData"
+// import allTripInfo from "./testData"
+import { allDestinationInfo } from "./testData"
+
 
 describe("Trip", () => {
   // Shows the trip class data
   let travelerTrip;
+  let travelerDestination;
 
   beforeEach(() => {
     let currentTraveler = {
@@ -158,6 +161,12 @@ describe("Trip", () => {
 
     travelerTrip = new Trip(currentTraveler, allTripInfo);
     // console.log(travelerTrip)
+
+    
+    // travelerDestination = new Destination(allDestinationInfo)
+    // console.log(travelerDestination)
+
+    
     
   });
 
@@ -199,18 +208,18 @@ describe("Trip", () => {
     ]);
   });
 
-  it.skip("should have a method that gets the current traveler's destination", function () {
-    console.log(travelerTrip.getDestination())
-    expect(travelerTrip).to.deep.equal(true)
-    //   {
-    //     id: 28,
-    //     destination: "San Juan, Puerto Rico",
-    //     estimatedLodgingCostPerDay: 70,
-    //     estimatedFlightCostPerPerson: 900,
-    //     image: "https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80",
-    //     alt: "white and brown concrete buildings near sea under white clouds during daytime"
-    //   }
-    
+  it.skip("should have a method that gets the current traveler's destination/s", function () {
+
+    expect(travelerTrip.destinationID).to.deep.equal([
+      {
+        id: 28,
+        destination: "San Juan, Puerto Rico",
+        estimatedLodgingCostPerDay: 70,
+        estimatedFlightCostPerPerson: 900,
+        image: "https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80",
+        alt: "white and brown concrete buildings near sea under white clouds during daytime"
+      }
+    ])
   })
 
   it("should have a method that gets current traveler's pending trips", function () {
