@@ -10,6 +10,7 @@ import Destination from './Destinations';
 const travelerContainer = document.querySelector('.traveler-container');
 // const tripContainer = document.querySelector('.trips-container');
 // const destinationContainer = document.querySelector('.destinations-container');
+const homePage = document.querySelector(".home-page");
 const loginPage = document.querySelector(".login-page");
 const form = document.querySelector(".form");
 const loginFormBtn = document.querySelector(".form-btn");
@@ -78,10 +79,12 @@ window.addEventListener("load", () => {
   fetchApiCalls();
 });
 
+// Form Validation (Username & Password)
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (userNameInput.value === "traveler1" && passwordInput.value === 'travel') {
     loginPage.classList.add("hidden")
+    homePage.classList.remove("hidden")
   } else {
     formErrorMessage.classList.remove("hidden")
   }
