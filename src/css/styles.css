@@ -6,6 +6,10 @@ span {
   font-weight: bold;
 }
 
+.agent-fee-card {
+  text-align: center;
+}
+
 /* Home Page */
 .c-item {
   height: 500px;
@@ -216,6 +220,14 @@ padding: 10px
   background: #ff8888;
   color: rgb(78, 25, 25);
   border-radius: 2px;
+}
+
+/* Footer */
+.footer {
+  background: #0275d8;
+  color: #fff;
+  padding: 25px 0 10px;
+  text-align: center;
 }
 
 /* Hide */
