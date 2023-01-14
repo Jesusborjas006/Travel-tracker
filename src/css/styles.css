@@ -26,6 +26,52 @@ span {
   background-color: rgb(245, 245, 245);
 }
 
+.user-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8vh;
+}
+
+.user-card {
+  border: 1px solid;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  transition: all .3s ease-in-out;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+.user-picture {
+  border-radius: 50%;
+  padding: 80px;
+  text-align: center;
+  background: #2d2d2d;
+  color: #fff;
+}
+
+.user-number {
+  background: #1e8ae9;
+  color: #fff;
+  width: 30%;
+  margin: 30px auto 0;
+  font-size: 22px;
+  letter-spacing: 3px;
+  border-radius: 5px;
+}
+
+.user-name {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+.spending-card {
+  border: 1px solid;
+}
+
 .activity-section .container {
   width: 100vw;
   margin: 0 auto;
@@ -73,13 +119,11 @@ span {
   display: inline-block;
   color:#fff;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 7px 10px;
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: bold;
 }
-
-
 
 /* Login Form Section */
 .login-page {
