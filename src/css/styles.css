@@ -1,7 +1,16 @@
-/* body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-} */
+ul {
+  list-style: none;
+}
 
+span {
+  font-weight: bold;
+}
+
+.agent-fee-card {
+  text-align: center;
+}
+
+/* Home Page */
 .c-item {
   height: 500px;
 }
@@ -14,4 +23,214 @@
 
 span {
   font-weight: bolder;
+}
+
+/* Activity Section */
+.activity-section {
+  background-color: rgb(245, 245, 245);
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8vh;
+}
+
+.user-card {
+  border: 1px solid rgb(227, 227, 227);
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  transition: all .3s ease-in-out;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+.user-picture {
+  border-radius: 50%;
+  padding: 80px;
+  text-align: center;
+  background: #2d2d2d;
+  color: #fff;
+}
+
+.user-number {
+  background: #1e8ae9;
+  color: #fff;
+  width: 30%;
+  margin: 30px auto 0;
+  font-size: 22px;
+  letter-spacing: 3px;
+  border-radius: 5px;
+}
+
+.user-name {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+.spending-card {
+  border: 1px solid rgb(223, 223, 223);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  width: 400px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.year-heading {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.money-spent {
+  margin-top: -10px;
+}
+
+.money-spent-list {
+  font-size: 40px;
+  margin-top: 30px;
+  margin-left: 35px;
+}
+
+.activity-section .container {
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.activity-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.activity-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 5vh 0;
+}
+
+.card {
+  line-height: 1.0;
+  border-radius: 12px;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.card img{
+  width: 400px;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-container {
+  padding: 10px 20px;
+}
+
+.status {
+  background: #ffac06;
+  color:#fff;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.card-total {
+  background: #0088ff;
+  display: inline-block;
+  color:#fff;
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Login Form Section */
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.img-side {
+width: 60vw;
+background: linear-gradient( rgba(0, 174, 255, 0.753), rgba(0, 174, 255, 0.72)), url("https://images.unsplash.com/photo-1576203866193-8b858e07d4bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80") no-repeat center center/cover;
+color: #fff;
+padding: 10px
+}
+
+.logo,
+.login-main-header,
+.login-text {
+  margin: 40px 0 0 40px;
+}
+
+.login-main-header {
+  margin-top: 25%;
+  font-size: 3.5em;
+}
+
+.login-text {
+  width: 60%;
+  padding: 8px;
+  font-size: 18px;
+}
+
+.form-side {
+  width: 40vw;
+  text-align: center
+}
+
+.form-side .form-header {
+  margin: 40% 0 8%;
+  font-size: 2.3rem;
+}
+
+.form-side .form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+  padding: 10px;
+  
+}
+
+.form input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.form-side .form-btn {
+  background: #0275d8;
+  color: #fff;
+  font-size: 24px;
+  padding: 6px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-error-message {
+  text-align: start;
+  padding: 5px 10px;
+  background: #ff8888;
+  color: rgb(78, 25, 25);
+  border-radius: 2px;
+}
+
+/* Footer */
+.footer {
+  background: #0275d8;
+  color: #fff;
+  padding: 25px 0 10px;
+  text-align: center;
+}
+
+/* Hide */
+.hidden {
+  display: none;
 }

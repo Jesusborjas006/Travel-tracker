@@ -10,6 +10,13 @@ import Destination from './Destinations';
 const travelerContainer = document.querySelector('.traveler-container');
 // const tripContainer = document.querySelector('.trips-container');
 // const destinationContainer = document.querySelector('.destinations-container');
+const homePage = document.querySelector(".home-page");
+const loginPage = document.querySelector(".login-page");
+const form = document.querySelector(".form");
+const loginFormBtn = document.querySelector(".form-btn");
+const userNameInput = document.querySelector("#username");
+const passwordInput = document.querySelector("#password");
+const formErrorMessage = document.querySelector(".form-error-message");
 
 // Global Variables
 let travelerData;
@@ -43,7 +50,7 @@ function fetchApiCalls() {
 }
 
 function loadHandler() {
-  displayCurrentTravelerInfo();
+  // displayCurrentTravelerInfo();
   getCurrentTrip()
   // displayCurrentTripsInfo()
   getCurrentDestination()
@@ -72,14 +79,25 @@ window.addEventListener("load", () => {
   fetchApiCalls();
 });
 
+// Form Validation (Username & Password)
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (userNameInput.value === "traveler1" && passwordInput.value === 'travel') {
+    loginPage.classList.add("hidden")
+    homePage.classList.remove("hidden")
+  } else {
+    formErrorMessage.classList.remove("hidden")
+  }
+});
 
-function displayCurrentTravelerInfo() {
-  travelerContainer.innerHTML = `
-    <p>Traveler ID: <span>${currentTraveler.id}</span></p>
-    <p>Traveler Name: <span>${currentTraveler.name}</span></p>
-    <p>Traveler Type: <span>${currentTraveler.travelerType}</span></p>
-`
-}
+
+// function displayCurrentTravelerInfo() {
+//   travelerContainer.innerHTML = `
+//     <p>Traveler ID: <span>${currentTraveler.id}</span></p>
+//     <p>Traveler Name: <span>${currentTraveler.name}</span></p>
+//     <p>Traveler Type: <span>${currentTraveler.travelerType}</span></p>
+// `
+// }
 
 // function displayCurrentTripsInfo() {
 //   tripContainer.innerHTML = `
