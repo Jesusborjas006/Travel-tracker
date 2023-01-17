@@ -113,7 +113,6 @@ function getCurrentTravelersTrips() {
   let currentTravelerID = currentTraveler.id;
   let travelersTripDetails = tripData.trips.filter(id => id.userID === currentTravelerID)
   currentUserTrips = travelersTripDetails
-  console.log(currentUserTrips)
   return travelersTripDetails
 }
 
@@ -126,7 +125,6 @@ function getCurrentTravelersDestinations() {
 
   // Gets only the first users destination
   currentUserDestinations = travelerDestinationData
-  console.log(travelerDestinationData);
   return travelerDestinationData
 }
 
