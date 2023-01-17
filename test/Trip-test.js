@@ -159,15 +159,7 @@ describe("Trip", () => {
       },    
     ]
 
-    travelerTrip = new Trip(currentTraveler, allTripInfo);
-    // console.log(travelerTrip)
-
-    
-    // travelerDestination = new Destination(allDestinationInfo)
-    // console.log(travelerDestination)
-
-    
-    
+    travelerTrip = new Trip(currentTraveler, allTripInfo);   
   });
 
   it("should be a function", function() {

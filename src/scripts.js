@@ -7,16 +7,34 @@ import Destination from './Destinations';
 
 
 // Query Selectors
-const travelerContainer = document.querySelector('.traveler-container');
-// const tripContainer = document.querySelector('.trips-container');
-// const destinationContainer = document.querySelector('.destinations-container');
 const homePage = document.querySelector(".home-page");
 const loginPage = document.querySelector(".login-page");
 const form = document.querySelector(".form");
-const loginFormBtn = document.querySelector(".form-btn");
 const userNameInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
 const formErrorMessage = document.querySelector(".form-error-message");
+
+// Book Trip Inputs
+const destinationFormInput = document.querySelector("#destinationInput");
+const checkInDate = document.querySelector('.check-in-date');
+const durationFormInput = document.querySelector("#durationInput");
+const travelerFormInput = document.querySelector("#travelerInput")
+
+// Displaying Traveler Data Query Selectors
+const travelerID = document.querySelector(".user-number");
+const userName = document.querySelector(".user-name");
+const travelerType = document.querySelector(".traveler-type");
+
+// Displaying Traveler Trip Card Data Query Selectors
+// const tripCard = document.querySelector(".card");
+// const statusCard = document.querySelector(".status");
+// const cardDate = document.querySelector(".card-date");
+// const cardDuration = document.querySelector(".card-duration");
+// const cardCostPerPerson = document.querySelector(".card-cost-person");
+// const cardLodgingPerDay = document.querySelector(".card-lodge-day");
+// const cardTravelers = document.querySelector(".card-travelers");
+const activityContainer = document.querySelector(".activity-container")
+
 
 // Global Variables
 let travelerData;
@@ -24,46 +42,100 @@ let tripData;
 let destinationData;
 let travelerRepository;
 let currentTraveler;
-let currentTrip;
-let currentDestination;
-
+let currentUserTrips;
+let currentUserDestinations;
+let currentUserTripCost;
 
 // Functions
 function fetchApiCalls() {
   returnDataPromises().then((data) => {
-    // travelerData gets all travelers
-    travelerData = (data[0].travelers.map((traveler) => new Traveler(traveler)))
-
-    // tripData fetches all trips     
+    travelerData = (data[0].travelers.map((traveler) => new Traveler(traveler)))  
     tripData = data[1]
-
-    // destinationData fetches all destination data
-    destinationData = data[2].destinations.map((destination) => new Destination(destination))
-
-    // holds all Traveler Objects
+    destinationData = data[2]
     travelerRepository = new TravelerRepository(travelerData)
-    console.log(travelerRepository)
-    
     randomizeCurrentTraveler()
     loadHandler()
   })
 }
 
+function postGetRequest() {
+  returnDataPromises().then((data) => {
+    tripData = data[1];
+    destinationData = data[2]
+    loadHandler();
+  })
+}
+
+// Book Trip Input Form
+function bookTripData() {
+  return {
+    userID: currentTraveler.id,
+    destinationID: destinationFormInput.value,
+    date: checkInDate.value.replaceAll("-", "/"),
+    duration: Number(durationFormInput.value),
+    travelers: Number(travelerFormInput.value),
+  }
+}
+
+// Post Trip Input values 
+function tripPost() {
+  const tripData = bookTripData();
+  fetch("http://localhost:3001/api/v1/trips", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error('Something went wrong with the server!')
+      }
+    })
+    .then(postGetRequest())
+    .catch(error => {
+      console.error(error.message)
+    })
+}
+
 function loadHandler() {
-  // displayCurrentTravelerInfo();
-  getCurrentTrip()
-  // displayCurrentTripsInfo()
-  getCurrentDestination()
-  // displayCurrentDestinationInfo()
+  displayCurrentTravelerInfo();
+  getCurrentTravelersTrips()
+  getCurrentTravelersDestinations()
+  renderTripCards()
+  getTotalForTrip()
 }
 
-function getCurrentTrip() {
-  return currentTrip = tripData.trips.filter(trip => trip.userID === currentTraveler.id
-  )
+// Gets all trips (past, upcoming and pending)
+function getCurrentTravelersTrips() {
+  let currentTravelerID = currentTraveler.id;
+  let travelersTripDetails = tripData.trips.filter(id => id.userID === currentTravelerID)
+  currentUserTrips = travelersTripDetails
+  console.log(currentUserTrips)
+  return travelersTripDetails
 }
 
-function getCurrentDestination() {
-  return currentDestination = destinationData.filter(location => location.id === currentTraveler.id)
+function getCurrentTravelersDestinations() {
+  let allDestinations = destinationData
+  let currentTravelerTrips = currentUserTrips
+  let travelerDestinationData = allDestinations.destinations.filter(data => {
+    return data.id === currentTravelerTrips[0].destinationID
+  })
+
+  // Gets only the first users destination
+  currentUserDestinations = travelerDestinationData
+  console.log(travelerDestinationData);
+  return travelerDestinationData
+}
+
+function getTotalForTrip() {
+  let travelersCost = currentUserDestinations[0].estimatedFlightCostPerPerson * currentUserTrips[0].travelers;
+  let stayCost = currentUserDestinations[0].estimatedLodgingCostPerDay * currentUserTrips[0].duration;
+  let totalCost = Math.round((travelersCost + stayCost) * 1.1)
+  currentUserTripCost = totalCost
+  return totalCost
 }
 
 function randomIndex() {
@@ -73,6 +145,23 @@ function randomIndex() {
 function randomizeCurrentTraveler() {
   return currentTraveler = travelerRepository.travelers[randomIndex()]
 }
+
+// Check In Date
+let date = new Date();
+let tDate1 = date.getDate();
+let month1 = date.getMonth() + 1;
+let year1 = date.getFullYear();
+
+if (tDate1 < 10) {
+  tDate1 = '0' + tDate1
+}
+
+if (month1 < 10) {
+  month1 = '0' + month1;
+}
+
+let minDate = year1 + "-" + month1 + "-" + tDate1
+checkInDate.min = minDate
 
 // Event Listeners
 window.addEventListener("load", () => {
@@ -90,37 +179,28 @@ form.addEventListener('submit', (e) => {
   }
 });
 
+// Display Content Functions
+function displayCurrentTravelerInfo() {
+  travelerID.innerText = `#${currentTraveler.id}`;
+  userName.innerText = currentTraveler.name;
+  travelerType.innerHTML = `Traveler Type: <span>${currentTraveler.travelerType}</span>`;
+}
 
-// function displayCurrentTravelerInfo() {
-//   travelerContainer.innerHTML = `
-//     <p>Traveler ID: <span>${currentTraveler.id}</span></p>
-//     <p>Traveler Name: <span>${currentTraveler.name}</span></p>
-//     <p>Traveler Type: <span>${currentTraveler.travelerType}</span></p>
-// `
-// }
-
-// function displayCurrentTripsInfo() {
-//   tripContainer.innerHTML = `
-//     <p>Trip ID: <span>${allTripIDs}<span></p>
-//     <p>Traveler ID: <span>${currentTrip[0].userID}<span></p>
-//     <p>Destination ID: <span>${allDestinationIDs}</span></p>
-//     <p>Travelers: <span>${allTripTravelers}</span></p>
-//     <p>Date: <span>${allTripDates}</span></p>
-//     <p>Duration: <span>${allTripDuration}</span></p>
-//     <p>Status: <span>${allTripStatus}</span></p>
-//     <p>Suggested Activities: <span>"None At The Moment"</span></p>
-//   `
-// }
-
-// function displayCurrentDestinationInfo() {
-//   let allDestinationIDs2 = currentTrip.map(current => current.destinationID)
-//   let allDestinationData = currentDestination.map(current => current)
-//   destinationContainer.innerHTML = `
-//   <p>Destination ID: <span>${allDestinationIDs2}<span></p>
-//     <p>Destination: <span>${allDestinationData[0].destination}<span></p>
-//     <p>Estimated Lodging Cost Per Day: <span>${allDestinationData[0].estimatedLodgingCostPerDay}</span></p>
-//     <p>Estimated Flight Cost Per Person: <span>${allDestinationData[0].estimatedFlightCostPerPerson}</span></p>
-//     <p>Image: <span>${allDestinationData[0].image}</span></p>
-//     <p>Alt: <span>${allDestinationData[0].alt}</span></p>
-//   `
-// }
+function renderTripCards() {
+  activityContainer.innerHTML += `
+  <div class="card">
+          <img src="${currentUserDestinations[0].image}" alt="${currentUserDestinations[0].alt}">
+          <div class="card-container">
+            <h4>${currentUserDestinations[0].destination}</h4>
+            <p class="status-2">${currentUserTrips[0].status}</p>
+            <p>Date: <span>${currentUserTrips[0].date}</span></p>
+            <p>Duration: <span>${currentUserTrips[0].duration} Days</span></p>
+            <p>Flight Cost Per Person: <span>$${currentUserDestinations[0].estimatedFlightCostPerPerson}</span></p>
+            <p>Lodging Cost Per Day: <span>$${currentUserDestinations[0].estimatedLodgingCostPerDay}</span></p>
+            <p>Travelers: <span>${currentUserTrips[0].travelers}</span></p>
+            </ul>
+            <p class="card-total">Total: $${getTotalForTrip()}</p>
+          </div> 
+        </div>
+  `
+}

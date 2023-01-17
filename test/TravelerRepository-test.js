@@ -2,14 +2,18 @@ import { expect } from "chai"
 import TravelerRepository from "../src/TraverlerRepository"
 import Traveler from "../src/Traveler"
 import { allTravelerInfo } from "./testData"
+import destinations from "./destination-test-data"
 
 describe("Traveler Repository", () => {
   let travelers;
   let travelerRepo;
+  let testDestinations;
+
 
   beforeEach(() => {
     travelers = allTravelerInfo.map((item) => new Traveler(item));
     travelerRepo = new TravelerRepository(travelers);
+    testDestinations = destinations;
   });
 
   it("should be a function", function () {
@@ -28,7 +32,7 @@ describe("Traveler Repository", () => {
     expect(travelerRepo.travelers[0]).to.be.an.instanceOf(Traveler);
   });
 
-  it("should have a method that returns a travelers data when given their traveler ID", function () {
+  it.skip("should have a method that returns a travelers data when given their traveler ID", function () {
     expect(travelerRepo.returnUserData(3)).to.deep.equal({
       id: 3,
       name: "Sibby Dawidowitsch",

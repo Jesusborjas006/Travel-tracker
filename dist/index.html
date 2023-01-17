@@ -8,7 +8,7 @@
   <title>Travel Tracker</title>
 </head>
 <body>
-  <main class="home-page">
+  <main class="home-page ">
   <!-- Nav Bar -->
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
     <div class="container">
@@ -43,9 +43,10 @@
       <div class="carousel-item active c-item">
         <img src="https://images.unsplash.com/photo-1609666570715-03ea035bf2eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" class="d-block w-100 c-img" alt="Slide 1">
         <div class="carousel-caption top-0 mt-4">
-          <p class="mt-5 fs-3 text-uppercase">A place to create your new adventure</p>
+          <p class="mt-5 fs-3 text-uppercase">A place to discover your new adventure</p>
           <h1 class="display-1 fw-bolder text-capitalize">Welcome To Travel Tracker</h1>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5">Book a tour</button>
+          <a href="#book-section">
+          <button class="btn btn-primary px-4 py-2 fs-5 mt-5">Book a tour</button></a>
         </div>
       </div>
       <div class="carousel-item c-item">
@@ -77,35 +78,30 @@
     </button>
   </div>
 
-
-  <section class="traveler-section">
-    <h1>Traveler</h1>
-    <div class="traveler-container"></div>
+  <!-- Book A Trip Section -->
+  <h2 class="trip-heading">Let's Book A Trip!</h2>
+  <section class="book-trip-section" id="book-trip-section" id="book-section">
+    <form class="trip-book-form">
+      <div class="book-form-container">
+        <input type="text" placeholder="Going To" id="destinationInput">
+        <input type='date' class="check-in-date" id="checkInDate"></input>
+        <input type="number" placeholder="Num of Days Staying" id="durationInput">
+        <input type="number" class="traveler-input" placeholder="Num of Travelers" id="travelerInput">
+      </div>
+      <div class="book-btn-container">
+      <button class="book-btn">Confirm</button>
+      </div>
+    </form>
   </section>
-
-  <hr>
-
-  <section class="trips-section">
-    <h1>Trips</h1>
-    <div class="trips-container"></div>
-  </section>
-
-  <hr>
-
-  <section class="destinations-section">
-    <h1>Destinations</h1>
-    <div class="destinations-container"></div>
-  </section>
-
-
-  <section class="activity-section">
+  
+  <section class="activity-section" id="activity">
     <h2 class="activity-heading">Activity</h2>
     <div class="user-container">
       <div class="user-card">
        <p class="user-picture">No Photo</p>
        <p class="user-number">#1</p>
        <h4 class="user-name">Ham Leadbeater</h4>
-       <p>Traveler Type: <span>relaxer</span></p>
+       <p class="traveler-type"></p>
       </div>
 
       <div class="spending-card">
@@ -113,15 +109,21 @@
         <h3 class="money-spent">$4125</h3>
 
         <ul class="money-spent-list">
-          <li>2019: <span>$1000</span></li>
-          <li>2020: <span>$1000</span></li>
-          <li>2021: <span>$1000</span></li>
-          <li>2022: <span>$1000</span></li>
+          <li>2019: <span>$</span></li>
+          <li>2020: <span>$</span></li>
+          <li>2021: <span>$</span></li>
+          <li>2022: <span>$</span></li>
         </ul>
       </div>
     </div>
     <div class="agent-fee-card">
-      <p>All trips include a travel agent’s 10% fee</p>
+      <p>All trips include a 10% travel agent's fee</p>
+    </div>
+    <div class="filter-trips-container">
+      <button class="all-trips-btn">All Trips</button>
+      <button class="past-trips-btn">Past</button>
+      <button class="upcoming-trips-btn">Upcoming</button>
+      <button class="pending-trips-btn">Pending</button>
     </div>
     <div class="container">
       <div class="activity-container">
@@ -129,89 +131,25 @@
           <img src="https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80" alt="white and brown concrete buildings near sea under white clouds during daytime">
           <div class="card-container">
             <h4>San Juan, Puerto Rico</h4>
-            <p class="status">Upcoming</p>
-            <p>Date: <span>2021/01/09</span></p>
-            <p>Duration: <span>15 Days</span></p>
-            <p>Flight Cost Per Person: <span>200</span></p>
-            <p>Lodging Cost Per Day: <span>70</span></p>
-            <p>Travelers: <span>3</span></p>
+            <p class="status-2">Approved</p>
+            <p class="card-date">Date: <span>2021/01/09</span></p>
+            <p class="card-duration">Duration: <span>15 Days</span></p>
+            <p class="card-cost-person">Flight Cost Per Person: <span>200</span></p>
+            <p class="card-lodge-day">Lodging Cost Per Day: <span>70</span></p>
+            <p class="card-travelers">Travelers: <span>3</span></p>
             </ul>
             <p class="card-total">Total: $4125</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80" alt="white and brown concrete buildings near sea under white clouds during daytime">
-          <div class="card-container">
-            <h4>San Juan, Puerto Rico</h4>
-            <p class="status">Upcoming</p>
-            <p>Date: <span>2021/01/09</span></p>
-            <p>Duration: <span>15 Days</span></p>
-            <p>Flight Cost Per Person: <span>200</span></p>
-            <p>Lodging Cost Per Day: <span>70</span></p>
-            <p>Travelers: <span>3</span></p>
-            </ul>
-            <p class="card-total">Total: $4125</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80" alt="white and brown concrete buildings near sea under white clouds during daytime">
-          <div class="card-container">
-            <h4>San Juan, Puerto Rico</h4>
-            <p class="status">Upcoming</p>
-            <p>Date: <span>2021/01/09</span></p>
-            <p>Duration: <span>15 Days</span></p>
-            <p>Flight Cost Per Person: <span>200</span></p>
-            <p>Lodging Cost Per Day: <span>70</span></p>
-            <p>Travelers: <span>3</span></p>
-            </ul>
-            <p class="card-total">Total: $4125</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80" alt="white and brown concrete buildings near sea under white clouds during daytime">
-          <div class="card-container">
-            <h4>San Juan, Puerto Rico</h4>
-            <p class="status">Upcoming</p>
-            <p>Date: <span>2021/01/09</span></p>
-            <p>Duration: <span>15 Days</span></p>
-            <p>Flight Cost Per Person: <span>200</span></p>
-            <p>Lodging Cost Per Day: <span>70</span></p>
-            <p>Travelers: <span>3</span></p>
-            </ul>
-            <p class="card-total">Total: $4125</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80" alt="white and brown concrete buildings near sea under white clouds during daytime">
-          <div class="card-container">
-            <h4>San Juan, Puerto Rico</h4>
-            <p class="status">Upcoming</p>
-            <p>Date: <span>2021/01/09</span></p>
-            <p>Duration: <span>15 Days</span></p>
-            <p>Flight Cost Per Person: <span>200</span></p>
-            <p>Lodging Cost Per Day: <span>70</span></p>
-            <p>Travelers: <span>3</span></p>
-            </ul>
-            <p class="card-total">Total: $4125</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80" alt="white and brown concrete buildings near sea under white clouds during daytime">
-          <div class="card-container">
-            <h4>San Juan, Puerto Rico</h4>
-            <p class="status">Upcoming</p>
-            <p>Date: <span>2021/01/09</span></p>
-            <p>Duration: <span>15 Days</span></p>
-            <p>Flight Cost Per Person: <span>200</span></p>
-            <p>Lodging Cost Per Day: <span>70</span></p>
-            <p>Travelers: <span>3</span></p>
-            </ul>
-            <p class="card-total">Total: $4125</p>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
   </section>
+
+  <div class="poke-container" id="poke-container"></div>
+
+  <footer class="footer">
+    <p>Copyright &copy; 2023 TravelTracker</p>
+  </footer>
 </main>
 
   <!-- Login Form Section -->
@@ -231,10 +169,6 @@
       </form>
     </div>
   </section>
-
-  <footer class="footer">
-    <p>Copyright &copy; 2023 TravelTracker</p>
-  </footer>
 
 
   

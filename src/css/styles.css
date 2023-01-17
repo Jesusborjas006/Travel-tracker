@@ -12,7 +12,7 @@ span {
 
 /* Home Page */
 .c-item {
-  height: 500px;
+  height: 600px;
 }
 
 .c-img {
@@ -25,14 +25,66 @@ span {
   font-weight: bolder;
 }
 
+/* Book Trip Section */
+.trip-heading {
+  text-align: center;
+  margin-top: 10vh;
+  font-size: 3rem;
+  text-decoration: underline;
+  
+
+}
+.book-trip-section {
+  padding: 40px;
+  width: 65%;
+  margin: 10vh auto;
+  border-radius: 10px;
+  background:#1e8ae9;
+}
+
+.book-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.book-trip-section input {
+  margin: 0 10px;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.book-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.book-btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: none;
+  background: #fff;
+  transition: all ease-in-out .2s;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  transform: translateY(-4px)
+}
+
+
 /* Activity Section */
 .activity-section {
   background-color: rgb(245, 245, 245);
+  padding-bottom: 10vh;
 }
 
 .user-container {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   margin-bottom: 8vh;
 }
 
@@ -42,11 +94,6 @@ span {
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
-  transition: all .3s ease-in-out;
-}
-
-.user-card:hover {
-  transform: translateY(-5px);
 }
 
 .user-picture {
@@ -63,7 +110,7 @@ span {
   width: 30%;
   margin: 30px auto 0;
   font-size: 22px;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   border-radius: 5px;
 }
 
@@ -129,14 +176,6 @@ span {
   padding: 10px 20px;
 }
 
-.status {
-  background: #ffac06;
-  color:#fff;
-  display: inline-block;
-  border-radius: 10px;
-  padding: 5px 10px;
-}
-
 .card-total {
   background: #0088ff;
   display: inline-block;
@@ -146,6 +185,31 @@ span {
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: bold;
+}
+
+/* Filter Buttons */
+.filter-trips-container {
+display: flex;
+justify-content: space-evenly;
+width: 50%;
+margin: 0 auto 2rem;
+}
+
+.filter-trips-container button{
+  background-color:#1e8ae9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  width: 150px;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filter-trips-container button:hover {
+  background: #0165bd;
+  transition: all ease-in-out .3s;
 }
 
 /* Login Form Section */
@@ -228,9 +292,36 @@ padding: 10px
   color: #fff;
   padding: 25px 0 10px;
   text-align: center;
+  
 }
 
 /* Hide */
 .hidden {
   display: none;
+}
+
+
+/* Status Background Colors */
+.status-1 {
+  background: #ffac06;
+  color:#fff;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.status-2 {
+  background: #10840c;
+  color:#fff;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.status-3 {
+  background: #ff0606;
+  color:#fff;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 10px;
 }

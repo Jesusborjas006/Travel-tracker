@@ -19,6 +19,7 @@ describe("Traveler", () => {
 
     traveler1 = new Traveler(currentTraveler1);
     traveler2 = new Traveler(currentTraveler2);
+    // console.log(traveler1.getTodaysDate())
   });
 
   it("should be a function", function () {
