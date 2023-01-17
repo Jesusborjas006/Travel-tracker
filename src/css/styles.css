@@ -10,6 +10,10 @@ span {
   text-align: center;
 }
 
+.nav-link {
+  color: #fff;
+}
+
 /* Home Page */
 .c-item {
   height: 600px;
@@ -105,13 +109,14 @@ span {
 }
 
 .user-number {
-  background: #1e8ae9;
+  background: #0888f8;
   color: #fff;
   width: 30%;
   margin: 30px auto 0;
   font-size: 22px;
   letter-spacing: 1px;
   border-radius: 5px;
+  font-weight: bold;
 }
 
 .user-name {
@@ -177,7 +182,7 @@ span {
 }
 
 .card-total {
-  background: #0088ff;
+  background: #166eba;
   display: inline-block;
   color:#fff;
   border-radius: 10px;
@@ -196,7 +201,7 @@ margin: 0 auto 2rem;
 }
 
 .filter-trips-container button{
-  background-color:#1e8ae9;
+  background-color:#166eba;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -208,7 +213,7 @@ margin: 0 auto 2rem;
 }
 
 .filter-trips-container button:hover {
-  background: #0165bd;
+  background: #3f94de;
   transition: all ease-in-out .3s;
 }
 
